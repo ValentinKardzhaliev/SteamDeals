@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Selling Games</title>
+</head>
+<body>
+    <h1>Top Selling Games</h1>
+    <ul>
+        {% for app in top_selling_apps %}
+            <li>
+                <h2>{{ app.name }}</h2>
+                {% if app.image_url %}
+                    <img src="{{ app.image_url }}" alt="{{ app.name }}" width="200">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <p>{{ app.price }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
