@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import top_selling_games
+from .views import fetch_and_store_games_with_discount
 
 urlpatterns = [
-    path('', top_selling_games, name='steam_apps'),
+    path('', fetch_and_store_games_with_discount, name='steam_apps'),
 ]

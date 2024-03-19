@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Selling Games</title>
+    <title>Game Deals</title>
 </head>
 <body>
-    <h1>Top Selling Games</h1>
+<h1>Game Deals</h1>
+<div>
     <ul>
-        {% for app in top_selling_apps %}
+        {% for game in games %}
             <li>
-                <h2>{{ app.name }}</h2>
-                {% if app.image_url %}
-                    <img src="{{ app.image_url }}" alt="{{ app.name }}" width="200">
+                <h2>{{ game.name }}</h2>
+                {% if game.discount_percent > 0 %}
+                    <p>Price:
+                        <del>{{ game.initial_formatted_price }}</del>
+                        <strong>{{ game.final_formatted_price }}</strong></p>
+                    <p>Discount: {{ game.discount_percent }}%</p>
                 {% else %}
-                    <p>No image available</p>
+                    <p>Price: {{ game.final_formatted_price }}</p>
+                    <p>No discount available</p>
                 {% endif %}
-                <p>{{ app.price }}</p>
+                {% if game.image_url %}
+                    <img src="{{ game.image_url }}" alt="{{ game.name }}">
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
+</div>
 </body>
 </html>
